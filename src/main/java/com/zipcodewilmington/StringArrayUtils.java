@@ -131,13 +131,13 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
         List<String> result = new ArrayList<String>();
-        for(int i =0;i< array.length-1;i++){
+        for(int i =0;i<array.length-1;i++){
             if(array[i] != array[i+1]){
                 result.add(array[i]);
-
             }
-        }
 
+        }
+        result.add (array[array.length-1]);
         return result.toArray(new String[0]);
     }
 
@@ -146,7 +146,19 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        List<String> newArray = new ArrayList<>();
+        String dupes =array[0];
+        for(int i =1;i< array.length;i++){
+            if(array[i].equals(array[i-1])){
+                dupes +=array[i];
+            }
+            else{
+                newArray.add(dupes);
+                dupes = array[i];
+            }
+        }
+        newArray.add(dupes);
+        return newArray.toArray(new String[0]);
     }
 
 

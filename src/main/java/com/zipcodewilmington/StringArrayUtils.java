@@ -88,7 +88,18 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        StringBuilder sb = new StringBuilder();
+        for(String str : array){
+            sb.append(str);
+        }
+        String concatedString = sb.toString().toLowerCase();
+        char[] alphabets = "abcdfghijklmnopqrstuvwxyz".toCharArray();
+        for(char words : alphabets){
+            if(concatedString.indexOf(words)== -1){
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
